@@ -2,6 +2,7 @@ import random
 
 min_number = 0
 max_number = 32768
+#random.seed(10) #反註解這行數字都會一樣
 for i in range(0, 10):
 	random_number = random.randint(min_number, max_number)
 	print(random_number)
