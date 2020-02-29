@@ -44,21 +44,21 @@ if(present_number-previous_number<0):
 for j in range(1,10):
 	print("up {0} times: {1}   \t down {2} times: {3}".format(j,up_ary[j],j,down_ary[j]))
 
-
 plt.style.use('ggplot')
 width = 0.4
 group1 = ['1','2','3','4','5','6','7','8','9']
 group2 = ['1','2','3','4','5','6','7','8','9']
 group1_index = range(len(group1))
 group2_index = range(len(group2))
-fig = plt.figure()
-ax1=fig.add_subplot(1,1,1)
-ax1.bar([i-width/2 for i in group1_index], up_ary[1:],width=width,align='center',color='darkblue')
-ax1.bar([i+width/2 for i in group2_index], down_ary[1:],width=width,align='center',color='yellow')
-ax1.xaxis.set_ticks_position('bottom')
-ax1.yaxis.set_ticks_position('left')
+#fig = plt.figure()
+#ax1=fig.add_subplot(1,1,1)
+plt.bar([i-width/2 for i in group1_index], up_ary[1:],width=width,align='center',color='darkblue', label='Up times')
+plt.bar([i+width/2 for i in group2_index], down_ary[1:],width=width,align='center',color='yellow', label='Down times')
+#plt.xaxis.set_ticks_position('bottom')
+#plt.yaxis.set_ticks_position('left')
 plt.xticks(group1_index,group1,rotation=0,fontsize='small')
 plt.xlabel('Continuous times')
 plt.ylabel('Times')
+plt.legend(loc='upper right')
 plt.savefig('Random_Numbers_Distribution2.png', dpi=400, bbox_inches='tight')
 plt.show()
