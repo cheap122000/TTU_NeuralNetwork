@@ -58,7 +58,6 @@ print(train_label_onehot[0:5])
 
 from keras.models import Sequential
 from keras.layers import Dense
-
 model = Sequential()
 model.add(Dense(units=256,
                 input_dim=784,
@@ -67,8 +66,7 @@ model.add(Dense(units=256,
 model.add(Dense(units=10,
                 kernel_initializer='normal',
                 activation='softmax'))
-
-model.compile(loss='categorical_crossentropy',
+model.compile(loss='mean_squared_error',
               optimizer='adam',
               metrics=['accuracy'])
 
@@ -81,9 +79,7 @@ train_history = model.fit(x=train_feature_normalize,
 
 scores = model.evaluate(test_feature_normalize, test_label_onehot)
 print('\n準確率 = ', scores[1])
-
 prediction = model.predict_classes(test_feature_normalize)
-
 show_images_labels_predictions(test_feature, test_label, prediction, 0)
 
 model.save('Mnist_mlp_model.h5')
